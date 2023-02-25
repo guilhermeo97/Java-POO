@@ -4,9 +4,12 @@ public class Exercicio3 {
         Cachorro3 dalila = new Cachorro3("Vira-lata", 120.0f, 2020, "Dalila", "Fêmea", 20.0f, true);
         dalila.descricaoDoCachorro();
         lion.descricaoDoCachorro();
-        System.out.println(dalila.getIMCC());
+        
         dalila.calculaIMCC();
+        dalila.setName("Marley");
         System.out.println(dalila.getName());
+        dalila.sethasVacine(false);
+        System.out.println(dalila.gethasVacine());
     }
 }
 
@@ -18,7 +21,6 @@ class Cachorro3 {
     private String sex;
     private float weight;
     private boolean hasVacine;
-    private float IMCC = weight / (size * size);
     
     public Cachorro3(float size,int age, String name, String sex, float weight) {
         this.name = name;
@@ -27,7 +29,6 @@ class Cachorro3 {
         this.age = 2023 - age;
         this.sex = sex;
         this.weight = weight;
-        this.IMCC = weight / (size * size);
     }
 
     public Cachorro3(String race, float size, int age, String name, String sex, float weight, boolean hasVacine){
@@ -38,7 +39,6 @@ class Cachorro3 {
         this.hasVacine = hasVacine;
         this.size = size;
         this.age = 2023 - age;
-        this.IMCC = weight / (size * size);
     }
 
     public void descricaoDoCachorro() {
@@ -49,25 +49,20 @@ class Cachorro3 {
         );
     }
 
-    public float getIMCC() {
-        return IMCC;
-    }
-
-    /**
-     * 
-     */
     public void calculaIMCC() {
+        float IMCC = this.weight / (this.size * this.size);
+
         if(IMCC <= 18.5) {
-            System.out.println("Abaixo do peso.");
+            System.out.println("IMCC é igual a " + IMCC + " por isso está abaixo do peso.");
         } else {
             if(IMCC > 18.5 && IMCC <= 25) {
-                System.out.println("Peso normal."); 
+                System.out.println("IMCC é igual a " + IMCC + "  por isso está normal."); 
             } else {
                 if(IMCC > 25 && IMCC <= 30){
-                    System.out.println("Acima do peso.");
+                    System.out.println("IMCC é igual a " + IMCC + "  por isso está acima do peso");
                 } else {
                     if (IMCC > 30) {
-                        System.out.println("Obeso.");
+                        System.out.println("IMCC é igual a " + IMCC + "  por isso está Obeso.");
                     }
                 }
             }
@@ -75,13 +70,19 @@ class Cachorro3 {
     }
 
 
-    public void setName() {
-        name = "Marley"; 
+    public void setName(String name) {
+        this.name = name; 
     }
     public String getName(){
         return this.name;
     }
 
+    public void sethasVacine(boolean hasVacine) {
+        this.hasVacine = hasVacine;
+    }
+    public boolean gethasVacine(){
+        return this.hasVacine;
+    }
 }
 
     
